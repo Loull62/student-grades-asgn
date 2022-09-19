@@ -48,14 +48,28 @@ function mainMenu() {
 // ******************************************************
 // MENU SELECTION FUNCTIONS
 // ******************************************************
+
+// Function to draw current state of grades array
+function drawArray() {
+  let outputStr = "";
+  for (let i = 0; i < grades.length; i++) {
+    divHeight = (grades[i] / maxGrade) * 600; // Scale grades to fit in array visualizer container
+    outputStr += `<div style="height:${divHeight}px"></div>`;
+  }
+  containerEl.innerHTML = outputStr;
+}
+
 function firstTo40() {
   // Set the grade of the first student to 40.
   outputEl.innerHTML = "First grade to 40";
+  grades[0] = 40;
+  drawArray();
 }
 
 function lastTo50() {
   // Set the grade of the last student to 50.
   outputEl.innerHTML = "Last grade to 50";
+
 }
 
 function randomTo100() {
@@ -66,6 +80,9 @@ function randomTo100() {
 function addRandomGrade() {
   // Add a random grade between 0 and 100 to the end of the array.
   outputEl.innerHTML = "Add random grade";
+  // grades.push(Math.random() * 600);
+    grades.push(Math.random * 600) / maxGrade;
+  // }
 }
 
 function removeLastGrade() {
@@ -91,16 +108,4 @@ function increaseGradesBy10() {
 function decreaseGradesBy10() {
   // Decrease each grade by 10%.
   outputEl.innerHTML = "Decrease all grades by 10%";
-}
-
-
-// Function to draw current state of grades array
-function drawArray() {
-  let outputStr = "";
-  let divHeight;
-  for (let i = 0; i < grades.length; i++) {
-    divHeight = (grades[i] / maxGrade) * 600; // Scale grades to fit in array visualizer container
-    outputStr += `<div style="height:${divHeight}px"></div>`;
-  }
-  containerEl.innerHTML = outputStr;
 }

@@ -43,6 +43,8 @@ function mainMenu() {
 
   // Redraw array to show any changes
   drawArray();
+  // maximum
+  cap();
 }
 
 // ******************************************************
@@ -127,4 +129,13 @@ function decreaseGradesBy10() {
   for (let i = 0; i < grades.length; i++) {
     grades[i] -= 10;   
 }
+}
+
+function cap() {
+  for (let i = 0; i < grades.length; i++) {
+    // forces grades that go above the frame to reduce back to 100
+    if (grades[i] >= 100) {
+      grades[i] = 100;
+    } 
+  }
 }
